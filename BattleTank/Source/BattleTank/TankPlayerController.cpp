@@ -30,7 +30,7 @@ ATank* ATankPlayerController::GetControlledTank() const
 
 void ATankPlayerController::AimTowardCrosshair()
 {
-	if (!GetControlledTank) { return; }
+	if (!GetControlledTank()) { return; }
 
 	// get world location of linterace through crosshair
 	// if it hits the landscape
