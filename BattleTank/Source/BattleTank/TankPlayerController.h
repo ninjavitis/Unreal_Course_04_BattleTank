@@ -23,7 +23,9 @@ public:
 	// Move the Tank Barrel so that the projectile trajectory
 	// intersects the world at the crosshair
 	void AimTowardCrosshair();
+
 	
 private:
+	bool GetSightRayHitLocation(FVector& HitLocation) const;
 
 };
