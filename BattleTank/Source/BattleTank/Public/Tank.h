@@ -23,6 +23,12 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	void AimAt(FVector HitLocation);
+	
+	UFUNCTION(BlueprintCallable, Category = Setup)
+	void setBarrelReference(UStaticMeshComponent* BarrelToSet);
+
+
+
 
 protected:
 	UTankAimingComponent * TankAimingComponent = nullptr;
@@ -31,5 +37,8 @@ protected:
 private:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
+	UPROPERTY(EditAnywhere, Category = "Firing Params")
+		float LaunchSpeed = 100000.0; //TODO find sensible default
 	
 };

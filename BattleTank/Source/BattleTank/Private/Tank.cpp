@@ -29,17 +29,17 @@ void ATank::Tick(float DeltaTime)
 
 void ATank::AimAt(FVector HitLocation)
 {
-	TankAimingComponent->AimAt(HitLocation);
-	
-	// auto OurTankName = GetName();
-	// UE_LOG(LogTemp, Warning, TEXT("%s aiming at %s"),*OurTankName, *HitLocation.ToString());
+	TankAimingComponent->AimAt(HitLocation, LaunchSpeed);
+}
 
+void ATank::setBarrelReference(UStaticMeshComponent * BarrelToSet)
+{
+	TankAimingComponent->SetBarrelReference(BarrelToSet);
 }
 
 // Called to bind functionality to input
 void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
-
 }
 
