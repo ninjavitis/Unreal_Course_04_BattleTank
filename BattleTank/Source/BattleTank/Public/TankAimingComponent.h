@@ -9,7 +9,10 @@
 #include "GameFramework/Pawn.h"
 #include "TankAimingComponent.generated.h"
 
-class UTankBarrel;  //Forward declaration
+//Forward declaration
+class UTankBarrel;  
+
+// Holds Barrel Properties and Elevate Method
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class BATTLETANK_API UTankAimingComponent : public UActorComponent
