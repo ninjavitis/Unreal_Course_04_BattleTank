@@ -70,7 +70,7 @@ void UTankAimingComponent::MoveBarrelToward(FVector AimDirection)
 
 	UE_LOG(LogTemp, Warning, TEXT("AimAsRotator: %s"), *AimAsRotator.ToString());
 
-	Barrel->Elevate(5);
+	Barrel->Elevate(DeltaRotator.Pitch); //TODO replace magic number
 	
 	// get the difference between current barrel rotation and aim direction
 	// elevate the barrel to the proper z vector 
