@@ -5,7 +5,6 @@
 #include "BattleTank.h"
 
 
-
 void UTankBarrel::Elevate(float RelativeSpeed)
 {
 	RelativeSpeed = FMath::Clamp<float>(RelativeSpeed, -1, 1);
