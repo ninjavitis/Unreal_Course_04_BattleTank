@@ -47,11 +47,13 @@ private:
 	UPROPERTY(EditAnywhere, Category = "Firing Params")
 		float LaunchSpeed = 100000.0; //TODO find sensible default
 
-	UPROPERTY(EditAnywhere, Category = Setup)
+	UPROPERTY(EditDefaultsOnly, Category = Setup)
 		TSubclassOf<AProjectile> ProjectileBlueprint;
 
+	UPROPERTY(EditDefaultsOnly)
+		float ReloadTimeInSeconds = 3.0f;
+
 	UTankBarrel* Barrel = nullptr;
-	
-	float ReloadTimeInSeconds = 3.0f;
+		
 	double LastFireTime = 0;
 };
