@@ -30,10 +30,10 @@ public:
 	void setBarrelReference(UTankBarrel* BarrelToSet);
 
 	UFUNCTION(BlueprintCallable, Category = Setup)
-		void setTurretReference(UTankTurret* TurretToSet);
+	void setTurretReference(UTankTurret* TurretToSet);
 
 	UFUNCTION(BlueprintCallable)
-		void Fire();
+	void Fire();
 
 
 protected:
