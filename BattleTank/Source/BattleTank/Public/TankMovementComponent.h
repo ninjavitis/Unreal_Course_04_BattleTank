@@ -21,5 +21,14 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Input")
 	void IntendedMoveForward(float Throw);
 
+	UFUNCTION(BlueprintCallable)
+	void Initialize(UTankTrack * MyLeftTrack, UTankTrack * MyRightTrack);
+
+
+private:
+	UTankTrack* LeftTrack = nullptr;
+	UTankTrack* RightTrack = nullptr;
 	
+
+
 };
