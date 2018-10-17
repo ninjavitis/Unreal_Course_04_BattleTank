@@ -41,7 +41,7 @@ protected:
 	UTankAimingComponent * TankAimingComponent = nullptr;
 	
 	UPROPERTY(BlueprintReadOnly)
-		UTankMovementComponent * TankMovementComponent = nullptr;
+	UTankMovementComponent * TankMovementComponent = nullptr;
 
 
 private:
@@ -49,13 +49,13 @@ private:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	UPROPERTY(EditAnywhere, Category = "Firing Params")
-		float LaunchSpeed = 100000.0; //TODO find sensible default
+	float LaunchSpeed = 60000.0; //TODO find sensible default
 
 	UPROPERTY(EditDefaultsOnly, Category = Setup)
-		TSubclassOf<AProjectile> ProjectileBlueprint;
+	TSubclassOf<AProjectile> ProjectileBlueprint;
 
 	UPROPERTY(EditDefaultsOnly)
-		float ReloadTimeInSeconds = 3.0f;
+	float ReloadTimeInSeconds = 3.0f;
 
 	UTankBarrel* Barrel = nullptr;
 		
