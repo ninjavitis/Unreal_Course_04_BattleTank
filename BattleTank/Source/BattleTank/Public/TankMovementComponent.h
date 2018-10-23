@@ -27,14 +27,10 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void Initialize(UTankTrack * MyLeftTrack, UTankTrack * MyRightTrack);
 
-	//TODO check best protection of this method
-	void RequestDirectMove(const FVector& MoveVelocity, bool bForceMaxSpeed) override;
-
-
 private:
 	UTankTrack* LeftTrack = nullptr;
 	UTankTrack* RightTrack = nullptr;
 	
-
-
+	void RequestDirectMove(const FVector& MoveVelocity, bool bForceMaxSpeed) override;
+	
 };
