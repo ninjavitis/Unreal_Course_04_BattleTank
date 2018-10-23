@@ -8,12 +8,20 @@
 #include "GameFramework/Pawn.h"
 #include "TankAimingComponent.generated.h"
 
+// Enum - Aiming States
+UENUM(BlueprintType)
+enum class EFiringState : uint8
+{
+	FSE_Locked UMETA(DisplayName="Locked"),
+	FSE_Aiming UMETA(DisplayName = "Aiming"),
+	FSE_Reloading UMETA(DisplayName = "Reloading")
+};
+
 //Forward declaration
 class UTankBarrel;
 class UTankTurret;
 
 // Holds Barrel Properties and Elevate Method
-
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class BATTLETANK_API UTankAimingComponent : public UActorComponent
 {
@@ -28,6 +36,8 @@ public:
 
 	void AimAt(FVector HitLocation, float LaunchSpeed);
 
+	UPROPERTY(BlueprintReadOnly, Category = "Enum")
+		EFiringState FiringState = EFiringState::FSE_Reloading;
 
 protected:
 	// Called when the game starts
