@@ -36,7 +36,7 @@ public:
 
 protected:
 	UPROPERTY(BlueprintReadOnly, Category = "Enum")
-	EFiringState FiringState = EFiringState::FSE_Reloading;
+	EFiringState FiringState = EFiringState::FSE_Aiming;
 
 private:
 	// Sets default values for this component's properties

@@ -37,6 +37,8 @@ protected:
 
 
 private:
+	virtual void BeginPlay() override;
+
 	UPROPERTY(EditAnywhere, Category = "Firing Params")
 	float LaunchSpeed = 10000.0; //TODO find sensible default
 
