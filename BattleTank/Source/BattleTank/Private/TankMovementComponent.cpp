@@ -21,7 +21,6 @@ void UTankMovementComponent::RequestDirectMove(const FVector & MoveVelocity, boo
 	IntentMoveForward(ForwardThrow);
 	IntentTurnRight(RightThrow);
 
-	UE_LOG(LogTemp, Warning, TEXT("%s move velocity: %s"),*GetOwner()->GetName(), *AIForwardIntention.ToString())
 }
 
 void UTankMovementComponent::IntentMoveForward(float Throw)
