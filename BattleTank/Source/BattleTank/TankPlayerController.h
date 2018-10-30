@@ -25,11 +25,10 @@ public:
 
 	
 protected:
-
+	UFUNCTION(BlueprintImplementableEvent, Category = "Setup")
+	void FoundAimingComponent(UTankAimingComponent* AimCompRef);
 	
 private:
-
-
 	// Move the Tank Barrel so that the projectile trajectory
 	// intersects the world at the crosshair
 	void AimTowardCrosshair();
