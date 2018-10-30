@@ -11,7 +11,7 @@
  */
 
 // Forward Declarations
-class ATank;
+
 class UTankAimingComponent;
 
 UCLASS()
@@ -25,11 +25,7 @@ public:
 
 	
 protected:
-	UFUNCTION(BlueprintCallable, Category = "Setup")
-	ATank * GetControlledTank() const;
 
-	UFUNCTION(BlueprintImplementableEvent, Category = "Setup")
-	void FoundAimingComponent(UTankAimingComponent* AimComponentReference);
 	
 private:
 
@@ -52,4 +48,8 @@ private:
 	bool GetLookDirection(FVector2D ScreenLocation, FVector & LookDirection) const;
 	bool GetLookVectorHitLocation(FVector LookDirection, FVector& HitLocation) const;
 
+	UTankAimingComponent* AimingComponent;
+
+	UPROPERTY(EditAnywhere, Category = "Firing Params")
+		float LaunchSpeed = 10000.0; //TODO find sensible default
 };

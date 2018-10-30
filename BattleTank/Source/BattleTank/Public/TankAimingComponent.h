@@ -31,9 +31,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Setup")
 	void Initialize(UTankTurret* MyTurret, UTankBarrel* MyBarrel);
 
-	void AimAt(FVector HitLocation, float LaunchSpeed);
+	void AimAt(FVector HitLocation);
 
-
+	
 protected:
 	UPROPERTY(BlueprintReadOnly, Category = "Enum")
 	EFiringState FiringState = EFiringState::FSE_Aiming;
@@ -41,6 +41,9 @@ protected:
 private:
 	// Sets default values for this component's properties
 	UTankAimingComponent();
+
+	UPROPERTY(EditAnywhere, Category = "Firing Params")
+	float LaunchSpeed = 10000.0; //TODO find sensible default
 
 	UTankBarrel* Barrel = nullptr;
 	UTankTurret* Turret = nullptr;

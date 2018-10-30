@@ -11,7 +11,8 @@
  */
 
 //Forward Declarations
-class ATank;
+
+class UTankAimingComponent;
 
 UCLASS()
 class BATTLETANK_API ATankAIController : public AAIController
@@ -21,6 +22,7 @@ class BATTLETANK_API ATankAIController : public AAIController
 	
 public:
 
+protected:
 
 
 private:
@@ -28,4 +30,8 @@ private:
 	virtual void Tick(float DeltaTime) override;
 
 	float AcceptanceRadius = 3000; // distance in cm
+
+	UTankAimingComponent* AimingComponent;
+
+
 };
