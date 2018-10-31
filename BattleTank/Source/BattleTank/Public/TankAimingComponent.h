@@ -40,11 +40,16 @@ public:
 	
 protected:
 	UPROPERTY(BlueprintReadOnly, Category = "Enum")
-	EFiringState FiringState = EFiringState::FSE_Aiming;
+	EFiringState FiringState = EFiringState::FSE_Reloading;
 
 private:
 	// Sets default values for this component's properties
 	UTankAimingComponent();
+
+	virtual void BeginPlay() override;
+
+	virtual void TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction) override;
+
 
 	UPROPERTY(EditAnywhere, Category = "Firing Params")
 	float LaunchSpeed = 10000.0; //TODO find sensible default
