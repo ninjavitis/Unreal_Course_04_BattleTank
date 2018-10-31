@@ -47,10 +47,9 @@ private:
 	UTankAimingComponent();
 
 	virtual void BeginPlay() override;
-
+		
 	virtual void TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction) override;
-
-
+	
 	UPROPERTY(EditAnywhere, Category = "Firing Params")
 	float LaunchSpeed = 10000.0; //TODO find sensible default
 
@@ -66,4 +65,8 @@ private:
 	float ReloadTimeInSeconds = 3.0f;
 
 	double LastFireTime = 0;
+
+	FVector AimDirection;
+
+	bool IsBarrelMoving(FVector AimDirection);
 };
