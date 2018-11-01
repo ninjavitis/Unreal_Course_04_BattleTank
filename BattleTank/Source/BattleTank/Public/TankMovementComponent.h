@@ -32,5 +32,7 @@ private:
 	UTankTrack* RightTrack = nullptr;
 	
 	void RequestDirectMove(const FVector& MoveVelocity, bool bForceMaxSpeed) override;
+
+	void SlippageSpeed();
 	
 };

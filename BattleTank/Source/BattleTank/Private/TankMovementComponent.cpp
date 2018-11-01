@@ -14,13 +14,22 @@ void UTankMovementComponent::RequestDirectMove(const FVector & MoveVelocity, boo
 {
 	auto TankForwardDirection = GetOwner()->GetActorForwardVector().GetSafeNormal();
 	auto AIForwardIntention = MoveVelocity.GetSafeNormal();
+	
 	auto ForwardThrow =	FVector::DotProduct(TankForwardDirection, AIForwardIntention);
-
 	auto RightThrow = FVector::CrossProduct(TankForwardDirection, AIForwardIntention).Z;
-
+	
 	IntentMoveForward(ForwardThrow);
 	IntentTurnRight(RightThrow);
+}
 
+void UTankMovementComponent::SlippageSpeed()
+{
+	auto TankRightDirection = GetOwner()->GetActorRightVector().GetSafeNormal();
+	auto VelocityVector = GetOwner()->GetVelocity().GetSafeNormal();
+
+	auto SlippageSpeed = FVector::DotProduct(TankRightDirection, VelocityVector);
+
+	UE_LOG(LogTemp, Warning, TEXT("%s: slip velocity: %f"), *GetName(), SlippageSpeed);
 }
 
 void UTankMovementComponent::IntentMoveForward(float Throw)
