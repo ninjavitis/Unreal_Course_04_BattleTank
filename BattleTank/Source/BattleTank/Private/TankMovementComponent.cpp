@@ -29,7 +29,7 @@ void UTankMovementComponent::SlippageSpeed()
 
 	auto SlippageSpeed = FVector::DotProduct(TankRightDirection, VelocityVector);
 
-	UE_LOG(LogTemp, Warning, TEXT("%s: slip velocity: %f"), *GetName(), SlippageSpeed);
+	//UE_LOG(LogTemp, Warning, TEXT("%s: slip velocity: %f"), *GetName(), SlippageSpeed);
 }
 
 void UTankMovementComponent::IntentMoveForward(float Throw)
@@ -42,7 +42,8 @@ void UTankMovementComponent::IntentMoveForward(float Throw)
 void UTankMovementComponent::IntentTurnRight(float Throw)
 {
 	if (!ensure(LeftTrack && RightTrack)) { return; }
-	LeftTrack->SetThrottle(Throw);
-	RightTrack->SetThrottle(-Throw);
+	LeftTrack->SetThrottle(Throw); 
+	RightTrack->SetThrottle(-Throw * 2);
 }
+
 

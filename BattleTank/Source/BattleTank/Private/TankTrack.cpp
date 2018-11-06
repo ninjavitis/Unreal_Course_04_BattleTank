@@ -34,15 +34,14 @@ void UTankTrack::ApplySlipCorrectionForce()
 	auto SlipAccelerationCorrection = -SlippageSpeed / DeltaTime * TankRightDirection;
 
 	auto TankRoot = Cast<UStaticMeshComponent>(GetOwner()->GetRootComponent());
-		
-	if (ensure(TankRoot)) 
+
+	if (ensure(TankRoot))
 	{
 		auto CorrectionForce = (TankRoot->GetMass() * SlipAccelerationCorrection) / 2;  //divided by 2 as there are 2 tracks applying force
 		TankRoot->AddForce(CorrectionForce);
 	}
-
-	UE_LOG(LogTemp, Warning, TEXT("%s: slip velocity: %f"), *GetName(), SlippageSpeed);
 }
+	
 
 
 void UTankTrack::DriveTrack()
@@ -60,6 +59,7 @@ void UTankTrack::DriveTrack()
 void UTankTrack::SetThrottle(float Throttle)
 {
 	CurrentThrottle = FMath::Clamp<float>(CurrentThrottle + Throttle, -1, 1);
+	//UE_LOG(LogTemp, Warning, TEXT("%s Current Throttle %f"), *GetName(), CurrentThrottle);
 }
 
 
