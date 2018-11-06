@@ -33,9 +33,9 @@ void UTankAimingComponent::TickComponent(float DeltaTime, ELevelTick TickType, F
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 	
-	if(CurrentAmmo >=1)
+	if(CurrentAmmo <=0)
 	{ 
-		FiringState = EFiringState::FSE_Reloading; 
+		FiringState = EFiringState::FSE_NoAmmo; 
 	}
 	else if ((FPlatformTime::Seconds() - LastFireTime < ReloadTimeInSeconds))
 	{

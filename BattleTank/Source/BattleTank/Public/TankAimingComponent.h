@@ -63,7 +63,7 @@ private:
 		TSubclassOf<AProjectile> ProjectileBlueprint;
 
 	UPROPERTY(EditAnywhere, Category = "Firing Params")
-	float LaunchSpeed = 50000.0; 
+	float LaunchSpeed = 100000.0; 
 	
 
 	// AIMING SECTION
