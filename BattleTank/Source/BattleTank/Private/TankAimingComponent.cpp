@@ -90,7 +90,7 @@ void UTankAimingComponent::MoveBarrelToward(FVector AimDirection)
 
 	// UE_LOG(LogTemp, Warning, TEXT("AimAsRotator: %s"), *AimAsRotator.ToString());
 
-	Barrel->Elevate(DeltaRotator.Pitch); //TODO replace magic number
+	Barrel->Elevate(DeltaRotator.Pitch);
 	
 	// Get the shortest rotation - if the rotation is over 180 degress subtract a full rotation
 	if(FMath::Abs(DeltaRotator.Yaw) > 180)
@@ -127,4 +127,9 @@ void UTankAimingComponent::Fire()
 		Projectile->LaunchProjectile(LaunchSpeed);
 		LastFireTime = FPlatformTime::Seconds();
 	}
+}
+
+const EFiringState UTankAimingComponent::GetFiringState()
+{
+	return FiringState;
 }

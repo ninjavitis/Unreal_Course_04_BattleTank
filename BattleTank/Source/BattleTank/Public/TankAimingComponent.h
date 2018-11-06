@@ -37,6 +37,8 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void Fire();
 
+	const EFiringState GetFiringState();
+
 	
 protected:
 	UPROPERTY(BlueprintReadOnly, Category = "Enum")
