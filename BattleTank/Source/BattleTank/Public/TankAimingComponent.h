@@ -14,7 +14,8 @@ enum class EFiringState : uint8
 {
 	FSE_Locked UMETA(DisplayName="Locked"),
 	FSE_Aiming UMETA(DisplayName = "Aiming"),
-	FSE_Reloading UMETA(DisplayName = "Reloading")
+	FSE_Reloading UMETA(DisplayName = "Reloading"),
+	FSE_NoAmmo UMETA(DisplayName = "No Ammo")
 };
 
 //Forward declaration
@@ -32,13 +33,14 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Setup")
 	void Initialize(UTankTurret* MyTurret, UTankBarrel* MyBarrel);
 
-	void AimAt(FVector HitLocation);
+	UFUNCTION(BlueprintCallable)
+	const int GetCurrentAmmo();
 
 	UFUNCTION(BlueprintCallable)
 	void Fire();
 
 	const EFiringState GetFiringState();
-
+	void AimAt(FVector HitLocation);
 	
 protected:
 	UPROPERTY(BlueprintReadOnly, Category = "Enum")
@@ -47,28 +49,33 @@ protected:
 private:
 	// Sets default values for this component's properties
 	UTankAimingComponent();
-
 	virtual void BeginPlay() override;
-		
 	virtual void TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction) override;
 	
-	UPROPERTY(EditAnywhere, Category = "Firing Params")
-	float LaunchSpeed = 10000.0; //TODO find sensible default
-
+	
+	// COMPONENT REFERENCE SECTION
 	UTankBarrel* Barrel = nullptr;
 	UTankTurret* Turret = nullptr;
 
-	void MoveBarrelToward(FVector AimDirection);
 
+	// PROJECTILE SECTION
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")
-	TSubclassOf<AProjectile> ProjectileBlueprint;
+		TSubclassOf<AProjectile> ProjectileBlueprint;
 
+	UPROPERTY(EditAnywhere, Category = "Firing Params")
+	float LaunchSpeed = 50000.0; 
+	
+
+	// AIMING SECTION
+	void MoveBarrelToward(FVector AimDirection);
+	FVector AimDirection;
+	bool IsBarrelMoving(FVector AimDirection);
+	
+
+	// RELOAD SECTION
 	UPROPERTY(EditDefaultsOnly)
 	float ReloadTimeInSeconds = 3.0f;
 
 	double LastFireTime = 0;
-
-	FVector AimDirection;
-
-	bool IsBarrelMoving(FVector AimDirection);
+	int CurrentAmmo = 3;
 };
