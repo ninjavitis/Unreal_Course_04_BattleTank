@@ -97,13 +97,15 @@ void UTankAimingComponent::MoveBarrelToward(FVector AimDirection)
 	Barrel->Elevate(DeltaRotator.Pitch);
 	
 	// Get the shortest rotation - if the rotation is over 180 degress subtract a full rotation
-	if(FMath::Abs(DeltaRotator.Yaw) > 180)
+	if(FMath::Abs(DeltaRotator.Yaw) < 180)
 	{
-		DeltaRotator.Yaw -= 360.0f;
+		Turret->Rotate(DeltaRotator.Yaw);
+	}
+	else 
+	{
+		Turret->Rotate(-DeltaRotator.Yaw);
 	}
 	
-	Turret->Rotate(DeltaRotator.Yaw);
-
 	// get the difference between current barrel rotation and aim direction
 	// elevate the barrel to the proper z vector 
 	// given max rotation speed and frame time

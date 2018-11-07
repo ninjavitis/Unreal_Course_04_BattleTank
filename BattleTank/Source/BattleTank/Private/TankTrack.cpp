@@ -42,8 +42,6 @@ void UTankTrack::ApplySlipCorrectionForce()
 	}
 }
 	
-
-
 void UTankTrack::DriveTrack()
 {
 	auto ForceApplied = GetForwardVector() * CurrentThrottle * TrackMaxDrivingForce;
