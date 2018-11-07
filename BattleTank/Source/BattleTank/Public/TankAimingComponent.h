@@ -73,9 +73,13 @@ private:
 	
 
 	// RELOAD SECTION
-	UPROPERTY(EditDefaultsOnly)
+	UPROPERTY(EditDefaultsOnly, Category = "Firing Params")
 	float ReloadTimeInSeconds = 3.0f;
 
+	UPROPERTY(EditDefaultsOnly, Category = "Firing Params")
+	uint32 CurrentAmmo = 3;
+	
 	double LastFireTime = 0;
-	int CurrentAmmo = 3;
+	
+	
 };

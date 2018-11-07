@@ -121,6 +121,7 @@ void UTankAimingComponent::Fire()
 	{
 		if (!ensure(Barrel)) { return; }
 		if (!ensure(ProjectileBlueprint)) { return; }
+
 		auto Projectile = GetWorld()->SpawnActor<AProjectile>
 			(
 				ProjectileBlueprint,
