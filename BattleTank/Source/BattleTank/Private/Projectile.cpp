@@ -3,6 +3,8 @@
 #include "Projectile.h"
 #include "Components/PrimitiveComponent.h"
 #include "GameFramework/Actor.h"
+#include "Engine/World.h"
+#include "Public/TimerManager.h"
 #include "Components/StaticMeshComponent.h"
 
 // Sets default values
@@ -52,4 +54,15 @@ void AProjectile::OnHit(UPrimitiveComponent * HitComponent, AActor * OtherActor,
 	LaunchBlast->Deactivate();
 	ImpactBlast->Activate();
 	BlastForce->FireImpulse();
+	CollisionMesh->SetVisibility(false);
+	CollisionMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+
+
+	FTimerHandle Timer;
+	GetWorld()->GetTimerManager().SetTimer(Timer, this, &AProjectile::OnTimerExpire, DestroyDelay, false);
+}
+
+void AProjectile::OnTimerExpire()
+{
+	Destroy();
 }
