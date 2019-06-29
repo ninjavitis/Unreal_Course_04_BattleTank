@@ -25,6 +25,15 @@ protected:
 	virtual void BeginPlay() override;
 	UProjectileMovementComponent* ProjectileMovementComponent = nullptr;
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Projectile Params")
+		float ProjectileVelocity = 0.0f;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Projectile Params")
+		float ProjectileTTL = 0.0f;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Projectile Params")
+		float ProjectileDamage = 0.0f;
+
 private:
 	UPROPERTY(VisibleAnywhere, Category = "Default Subobjects")
 	UStaticMeshComponent* CollisionMesh;
@@ -45,4 +54,8 @@ private:
 	float DestroyDelay = 0.3;
 
 	void OnTimerExpire();
+
+
+
+
 };
